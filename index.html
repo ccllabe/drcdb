@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en" data-snapshot-date="2026-10-23"><head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Dr.C database: Drug Repurposing in Cancer database, literature statistics and research resources.">
+	<meta name="author" content="">
+
+	<title>Dr.C database</title>
+
+	<style>
+		body{
+			font-family: Arial, Helvetica, sans-serif;
+			margin:0;
+		}
+
+		.brand-c{
+			color:#D62828;
+		}
+
+
+		.bd-placeholder-img {
+			font-size: 1.125rem;
+			text-anchor: middle;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
+
+		@media (min-width: 768px) {
+			.bd-placeholder-img-lg {
+			  font-size: 3.5rem;
+			}
+		}
+
+		.mainContainer{
+			margin: 1% auto auto;
+			background-color:#F7F7F7;
+			display:flex;
+			flex-direction: column;
+			width:90%;
+			padding:2%;
+			border-radius: 20px;
+			text-align: center;
+		}
+
+		.home-intro-wrap {
+			text-align: center;
+		}
+
+		.linkAdaptor{
+			margin-top:2%;
+			display:flex;
+			flex-direction: row;
+			justify-content: space-between;
+		}
+
+		.dContainer{
+			width:50%;
+			background-color:#31708F;
+			border-radius: 20px;
+			margin: 0 auto;
+		}
+
+		.dContainer:hover{
+			border:8px solid #83A9BB;
+			cursor: pointer;
+		}
+
+		.dContainer > a,.dCContainer > a{
+			text-decoration: none;
+		}
+
+		.dCContainer{
+			width:48%;
+			background-color:#D87818;
+			border-radius: 20px;
+		}
+
+		.dCContainer:hover{
+			border:8px solid #E7AE74;
+			cursor: pointer;
+		}
+
+		.hisContainer{
+			margin-top:2%;
+			width:100%;
+			height:400px;
+			background-color:#e2e2e2;
+			border-radius: 20px;
+			display:flex;
+			flex-direction: row;
+			justify-content: space-between
+		}
+
+		.div_hisL ,.div_hisR{
+			width :50%;
+			margin : 2%;
+		}
+
+		.div_hisR {
+			position: relative;
+			min-width: 0;
+		}
+
+		#history-chart {
+			display: block;
+		}
+
+		@media (max-width: 767px) {
+			.hisContainer {
+				height: auto;
+				min-height: 400px;
+				flex-direction: column;
+			}
+
+			.div_hisL, .div_hisR {
+				width: auto;
+				margin: 2%;
+			}
+
+			.div_hisR {
+				height: 320px;
+			}
+		}
+
+		div.div_floatInfo{
+			z-index:999;
+			width:500px;
+			padding:0.5%;
+			background-color:rgb(0,0,0,0.7);
+			color:rgb(255,255,255);
+			display:none;
+			position:fixed;
+		}
+
+		.feedback-admin-link {
+			position: fixed;
+			right: 1rem;
+			bottom: 1rem;
+			z-index: 1000;
+			display: inline-flex;
+			width: 2.75rem;
+			height: 2.75rem;
+			align-items: center;
+			justify-content: center;
+			border: 1px solid #777;
+			border-radius: 50%;
+			background: #333;
+			color: #fff;
+			opacity: 0.75;
+			text-decoration: none;
+		}
+
+		.feedback-admin-link:hover {
+			opacity: 1;
+		}
+
+		.feedback-admin-link:focus-visible {
+			outline: 3px solid #31708F;
+			outline-offset: 3px;
+			opacity: 1;
+		}
+
+		.feedback-admin-link svg {
+			width: 1.35rem;
+			height: 1.35rem;
+		}
+
+		@media (max-width: 220px) {
+			.mainContainer > div:first-child > h1 {
+				font-size: clamp(1rem, 7vw, 1.4rem);
+				overflow-wrap: anywhere;
+			}
+
+			.home-intro-wrap {
+				overflow-wrap: anywhere;
+			}
+		}
+
+	</style>
+
+
+
+
+
+<style>
+
+
+
+	nav > ul {
+
+		list-style: none;   /* 移除項目符號 */
+
+	}
+
+
+
+	nav > li {
+
+		display: inline;
+
+	}
+
+
+
+	nav a {
+
+		color: inherit; /* 移除超連結顏色 */
+
+		display: block; /* 讓 <a> 填滿 <li> */
+
+		font-weight:bold;
+
+		text-decoration: none;  /* 移除超連結底線 */
+
+		white-space: nowrap;
+
+	}
+
+
+
+	/* 滑鼠移到 <a> 時變成深底淺色 */
+
+	nav a.nav_button:hover  {
+
+		background-color: rgb(115, 115, 115);
+
+		color: white;
+
+	}
+
+
+
+	.nav_container {
+
+		display: flex;
+
+		box-sizing:border-box;
+
+		width:100%;
+
+		max-width:1440px;
+
+		min-height:104px;
+
+		justify-content:space-between;
+
+		align-items:center;
+
+		gap:16px;
+
+		padding:8px clamp(12px, 2vw, 28px);
+
+	}
+
+	.nav_main {
+
+		display: flex;
+
+		flex-direction:row;
+
+		flex:0 1 auto;
+
+		min-width:0;
+
+		width:auto;
+
+		height:auto;
+
+		margin:0;
+
+		padding:0;
+
+		list-style:none;
+
+		justify-content:flex-end;
+
+	}
+
+	.nav_main li{
+
+		font-size:1.2rem;
+
+	}
+
+	.nav_main li > a{
+
+		padding:10px 12px;
+
+		color:#DCDCDC;
+
+	}
+
+
+
+	.div_menu{
+
+		box-sizing:border-box;
+
+		min-height:104px;
+
+		background-color:#000000;
+
+		display: flex;
+
+		justify-content:center;
+
+		width:100%;
+
+	}
+
+
+
+	.a_home{
+
+		font-weight: bold;
+
+		color:#FFFFFF;
+
+		display: flex;
+
+		flex-direction:row;
+
+		align-items:center;
+
+		gap:12px;
+
+		min-width:0;
+
+	}
+
+
+
+	.brand-c{
+
+		color:#D62828;
+
+	}
+
+
+
+	.brand_lockup{
+
+		display:flex;
+
+		flex-direction:column;
+
+		align-items:center;
+
+		width:fit-content;
+
+		max-width:100%;
+
+		font-size:60px;
+
+		line-height:60px;
+
+		min-width:0;
+
+	}
+
+
+
+	.brand_name{
+
+		display:flex;
+
+		width:max-content;
+
+		max-width:100%;
+
+		align-items:baseline;
+
+		white-space:nowrap;
+
+	}
+
+
+
+	/*Empty Space around the letter cannot be simple solved*/
+
+	span.main_home{
+
+		font-size:inherit;
+
+		line-height:inherit;
+
+		height: 56px;
+
+		white-space:nowrap;
+
+	}
+
+	span.brand_database{
+
+		font-size:inherit;
+
+		line-height:inherit;
+
+		height:56px;
+
+		white-space:nowrap;
+
+	}
+
+	span.brand_description{
+
+		display:block;
+
+		width:100%;
+
+		max-width:100%;
+
+		min-width:0;
+
+		font-size:clamp(0.8rem, 1vw, 0.95rem);
+
+		line-height:1.3;
+
+		font-weight:normal;
+
+		color:#CBD5E1;
+
+		text-align:center;
+
+		overflow-wrap:anywhere;
+
+	}
+
+
+
+	@media (max-width: 1023px){
+
+		.div_menu{
+
+			height:auto;
+
+			min-height:0;
+
+		}
+
+		.nav_container{
+
+			height:auto;
+
+			flex-direction:column;
+
+			align-items:center;
+
+			gap:8px;
+
+		}
+
+		.a_home{
+
+			align-self:center;
+
+			flex-direction:column;
+
+			gap:2px;
+
+			width:100%;
+
+		}
+
+		.brand_lockup{
+
+			width:fit-content;
+
+			max-width:100%;
+
+			font-size:clamp(2rem, 11vw, 2.75rem);
+
+			line-height:1.05;
+
+		}
+
+		span.main_home{
+
+			height:auto;
+
+		}
+
+		span.brand_database{
+
+			height:auto;
+
+		}
+
+		span.brand_description{
+
+			font-size:clamp(0.75rem, 3.5vw, 0.9rem);
+
+			text-align:center;
+
+			white-space:normal;
+
+			min-width:0;
+
+		}
+
+		.nav_main{
+
+			width:100%;
+
+			height:auto;
+
+			flex-wrap:wrap;
+
+			justify-content:center;
+
+			gap:0 4px;
+
+		}
+
+		.nav_main li{
+
+			font-size:1rem;
+
+		}
+
+		.nav_main li > a{
+
+			padding:8px 10px;
+
+		}
+
+	}
+
+
+
+	@media (max-width: 220px){
+
+		.brand_name{
+
+			font-size:clamp(1.1rem, 9vw, 1.4rem);
+
+		}
+
+		span.brand_description{
+
+			font-size:clamp(0.55rem, 4.1vw, 0.75rem);
+
+		}
+
+	}
+
+
+
+	@media (max-width: 160px){
+
+		.brand_lockup{
+
+			font-size:clamp(0.55rem, 9vw, 1rem);
+
+		}
+
+		span.brand_description{
+
+			font-size:clamp(0.5rem, 3.5vw, 0.65rem);
+
+		}
+
+		.nav_main li{
+
+			flex:1 1 40%;
+
+			min-width:0;
+
+		}
+
+		nav a.nav_button{
+
+			white-space:normal;
+
+			text-align:center;
+
+			overflow-wrap:anywhere;
+
+		}
+
+	}
+
+</style><link rel="canonical" href="https://ccllabe.github.io/drcdb/"><style>
+    .mainContainer .dContainer { box-sizing: border-box; width: 100%; max-width: 900px; padding: 12px; }
+    .displayPanel .div_row:not(.literature-stats-row) { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+    #chartContainer2, #chartContainer3 { width: 100%; height: auto; min-width: 0; margin: 0; }
+    .displayPanel table.t_top10 { width: 100%; table-layout: fixed; }
+    .displayPanel table.t_top10 th, .displayPanel table.t_top10 td { overflow-wrap: anywhere; }
+    .displayPanel .subtContainer { box-sizing: border-box; width: 100%; }
+    @media (max-width: 700px) {
+      .mainContainer .dContainer { padding: 12px 4px; }
+      .displayPanel .div_row:not(.literature-stats-row) { grid-template-columns: minmax(0, 1fr); }
+      .displayPanel table.literature-stats-table { width: 100%; }
+      div.div_footC { flex-direction: column; width: 90%; gap: 12px; }
+    }
+  </style></head>
+
+
+
+
+<body><div class="div_menu navbar-fixed-top">
+
+<nav id="menu" class="nav_container">
+
+	<a href="http://120.126.17.213:58038/P097v5/bigtable.php" class="a_home"><div class="brand_lockup"><div class="brand_name"><span class="main_home">Dr.<span class="brand-c">C</span></span><span class="brand_space" aria-hidden="true">&nbsp;</span><span class="brand_database">database</span></div><span class="brand_description">Drug Repurposing in Cancer database</span></div></a>
+
+
+
+	<ul class="nav_main">
+
+		<li class="">
+
+			<a class="nav_button" href="https://ccllabe.github.io/drcdb/">HOME</a>
+
+		</li>
+
+		<li class="">
+
+			<a class="nav_button" href="http://120.126.17.213:58038/P097v5/tut_main.php">TUTORIAL</a>
+
+		</li>
+
+		<li class="">
+
+			<a class="nav_button" href="http://120.126.17.213:58038/P097v5/download.php">DOWNLOAD</a>
+
+		</li>
+
+		<li class="">
+
+			<a class="nav_button" href="http://120.126.17.213:58038/P097v5/contact_us.php">CONTACT US</a>
+
+		</li>
+
+	</ul>
+
+</nav>
+
+</div>
+
+
+<main role="main">
+	<div class="mainContainer">
+		<div>
+			<h1>Welcome to <span>Dr.</span><span class="brand-c">C</span><span> database</span>!</h1>
+			<h3 class="home-intro-wrap">All data were collected from more than 1742 publications through manual review and double-checking.</h3>
+		</div>
+		<div class="linkAdaptor">
+			<div class="dContainer">
+				<a href="http://120.126.17.213:58038/P097v5/bigtable.php" target="_self">
+
+		<style>
+			.displayPanel{
+				margin:2% auto auto;
+				width:90%;
+			}
+
+			div.div_row > div > p{
+				color:#FFFFFF;
+				font-weight:bold;
+			}
+
+			div.displayPanel > h2{
+				color:#FFFFFF;
+				font-weight:bold;
+				border-bottom: 1px solid #FFFFFF;
+			}
+
+			div.subtContainer{
+				width:50%;
+				padding:1.5%;
+				display:block;
+
+				text-align:center;
+				margin-left:auto;
+				margin-right:auto;
+				font-weight:bold;
+				font-size:2em;
+				color:#FFFFFF;
+			}
+
+			div.sepLine{
+				height:2px;
+				width:100%;
+				background: linear-gradient(45deg,#31708F,#D87818,#31708F);;
+			}
+
+			div.tContainer{
+				display:flex;
+				flex-direction:column;
+			}
+
+			div.lContainer{
+				color:#FFFFFF;
+				font-weight:bold;
+			}
+
+			div.div_row.literature-stats-row{
+				flex-wrap:wrap;
+				width:100%;
+				height:auto;
+				min-height:0;
+				margin-bottom:50px;
+			}
+
+			.literature-stats-row > .div_right{
+				display:none;
+			}
+
+			.div_left.literature-stats{
+				flex:0 0 100%;
+				float:none;
+				width:100%;
+				max-width:100%;
+				margin-left:auto;
+				margin-right:auto;
+				text-align:center;
+				box-sizing:border-box;
+			}
+
+			.literature-stats .lContainer{
+				width:100%;
+				margin:0;
+				float:none;
+				flex-basis:auto;
+				text-align:center;
+				box-sizing:border-box;
+			}
+
+			.literature-stats .lContainer ul{
+				width:fit-content;
+				margin-left:auto;
+				margin-right:auto;
+				text-align:left;
+			}
+
+			table.literature-stats-table,
+			table.literature-stats-table th,
+			table.literature-stats-table td{
+				border:1px solid #FFFFFF;
+				border-collapse:collapse;
+			}
+
+			table.literature-stats-table{
+				width:80%;
+				margin:0 auto 15px;
+			}
+
+			table.literature-stats-table th,
+			table.literature-stats-table td{
+				padding:5px;
+				color:#FFFFFF;
+			}
+
+			table.literature-stats-table th:first-child,
+			table.literature-stats-table td:first-child{
+				text-align:left;
+			}
+
+			table.literature-stats-table th:last-child,
+			table.literature-stats-table td:last-child{
+				text-align:center;
+			}
+
+			div.div_row{
+				display:flex;
+				flex-direction:row;
+				justify-content: space-between;
+			}
+
+			div.div_charts{
+				width: 400px;
+				height: 400px;
+				background-color:#31708F;
+			}
+
+			div.div_charts3{
+				width: 400px;
+				height: 600px;
+				margin-bottom:5%;
+			}
+
+			div.div_charts > div > h2{
+				color:#FFFFFF;
+			}
+		</style>
+	 <div class="displayPanel"><div class="subtContainer">Literature</div><div class="sepLine"></div><div class="tContainer"><div class="div_row literature-stats-row"><div class="div_left literature-stats"><table class="literature-stats-table"><thead><tr><th>Item</th><th>Value</th></tr></thead><tbody><tr><td>Drugs</td><td>737</td></tr><tr><td>Cancer Types</td><td>31</td></tr><tr><td>Cell Lines</td><td>1961</td></tr><tr><td>Reference</td><td>1742</td></tr><tr><td>IC50</td><td>6846</td></tr><tr><td>Cell Exps</td><td>11685</td></tr><tr><td>Xenografts Exps</td><td>1979</td></tr><tr><td>Update Time</td><td>2024-07-05</td></tr></tbody></table><div class="lContainer"><ul><li>Combine treatment</li><li>Dosagesforms</li><li>Drug status</li></ul></div></div><div class="div_right"><div id="chartContainer1" class="div_charts"><div data-summary-chart="" style="height:400px; width: 300px;"><h2 style="width:300px;text-align: center;">Paper Quantity</h2><table data-summary-plot-table="" data-summary-plot-height="260" style="border-collapse: collapse;"><tbody><tr style="height:260px;width:300px"><td valign="bottom"><table id="bar1_0" style="background-color:rgb(129,216,208);height:1px;width:5px" title="1983: 1"><tbody><tr><td></td></tr></tbody></table></td><td valign="bottom"><table id="bar1_1" style="background-color:rgb(129,216,208);height:1px;width:5px" title="1984: 1"><tbody><tr><td></td></tr></tbody></table></td><td valign="bottom"><table id="bar1_2" style="background-color:rgb(129,216,208);height:3px;width:5px" title="1986: 3"><tbody><tr><td></td></tr></tbody></table></td><td valign="bottom"><table id="bar1_3" style="background-color:rgb(129,216,208);height:1px;width:5px" title="1987: 1"><tbody><tr><td></td></tr></tbody></table></td><td valign="bottom"><table id="bar1_4" style="background-color:rgb(129,216,208);height:2px;width:5px" title="1990: 2"><tbody><tr><td></td></tr></tbody></table></td><td valign="bottom"><table id="bar1_5" style="background-color:rgb(129,216,208);height:1px;width:5px" title="1991: 1"><tbody><tr><td></td></tr></tbody></table></td><td valign="bottom"><table id="bar1_6" style="background-color:rgb(129,216,208);height:1px;width:5px" title="1993: 1"><tbody><tr><td></td></tr></tbody></table></td><td valign="bottom"><table id="bar1_7" style="background-color:rgb(129,216,208);height:2px;width:5px" title="1995: 2"><tbody><tr><td></td></tr></tbody></table></td><td valign="bottom"><table id="bar1_8" style="background-color:rgb(129,216,208);height:1px;width:5px" title="1996: 1"><tbody><tr><td></td></tr></tbody></table></td><td valign="bottom"><table id="bar1_9" style="background-color:rgb(129,216,208);height:2px;width:5px" title="1997: 2"><tbody><tr><td></td></tr></tbody></table></td><td valign="bottom"><table id="bar1_10" style="background-color:rgb(129,216,208);height:2px;width:5px" title="1999: 2"><tbody><tr><td></td></tr></tbody></table></td><td valign="bottom"><table id="bar1_11" style="background-color:rgb(129,216,208);height:1px;width:5px" title="2000: 1"><tbody><tr><td></td></tr></tbody></table></td><td valign="bottom"><table id="bar1_12" style="background-color:rgb(129,216,208);height:4px;width:5px" title="2001: 4"><tbody><tr><td></td></tr></tbody></table></td><td valign="bottom"><table id="bar1_13" style="background-color:rgb(129,216,208);height:4px;width:5px" title="2002: 4"><tbody><tr><td></td></tr></tbody></table></td><td valign="bottom"><table id="bar1_14" style="background-color:rgb(129,216,208);height:8px;width:5px" title="2003: 8"><tbody><tr><td></td></tr></tbody></table></td><td valign="bottom"><table id="bar1_15" style="background-color:rgb(129,216,208);height:4px;width:5px" title="2004: 4"><tbody><tr><td></td></tr></tbody></table></td><td valign="bottom"><table id="bar1_16" style="background-color:rgb(129,216,208);height:8px;width:5px" title="2005: 8"><tbody><tr><td></td></tr></tbody></table></td><td valign="bottom"><table id="bar1_17" style="background-color:rgb(129,216,208);height:8px;width:5px" title="2006: 8"><tbody><tr><td></td></tr></tbody></table></td><td valign="bottom"><table id="bar1_18" style="background-color:rgb(129,216,208);height:1px;width:5px" title="2007: 1"><tbody><tr><td></td></tr></tbody></table></td><td valign="bottom"><table id="bar1_19" style="background-color:rgb(129,216,208);height:8px;width:5px" title="2008: 8"><tbody><tr><td></td></tr></tbody></table></td><td valign="bottom"><table id="bar1_20" style="background-color:rgb(129,216,208);height:21px;width:5px" title="2009: 21"><tbody><tr><td></td></tr></tbody></table></td><td valign="bottom"><table id="bar1_21" style="background-color:rgb(129,216,208);height:14px;width:5px" title="2010: 14"><tbody><tr><td></td></tr></tbody></table></td><td valign="bottom"><table id="bar1_22" style="background-color:rgb(129,216,208);height:24px;width:5px" title="2011: 24"><tbody><tr><td></td></tr></tbody></table></td><td valign="bottom"><table id="bar1_23" style="background-color:rgb(129,216,208);height:26px;width:5px" title="2012: 26"><tbody><tr><td></td></tr></tbody></table></td><td valign="bottom"><table id="bar1_24" style="background-color:rgb(129,216,208);height:43px;width:5px" title="2013: 43"><tbody><tr><td></td></tr></tbody></table></td><td valign="bottom"><table id="bar1_25" style="background-color:rgb(129,216,208);height:109px;width:5px" title="2014: 109"><tbody><tr><td></td></tr></tbody></table></td><td valign="bottom"><table id="bar1_26" style="background-color:rgb(129,216,208);height:150px;width:5px" title="2015: 150"><tbody><tr><td></td></tr></tbody></table></td><td valign="bottom"><table id="bar1_27" style="background-color:rgb(129,216,208);height:197px;width:5px" title="2016: 197"><tbody><tr><td></td></tr></tbody></table></td><td valign="bottom"><table id="bar1_28" style="background-color:rgb(129,216,208);height:233px;width:5px" title="2017: 233"><tbody><tr><td></td></tr></tbody></table></td><td valign="bottom"><table id="bar1_29" style="background-color:rgb(129,216,208);height:160px;width:5px" title="2018: 160"><tbody><tr><td></td></tr></tbody></table></td><td valign="bottom"><table id="bar1_30" style="background-color:rgb(129,216,208);height:105px;width:5px" title="2019: 105"><tbody><tr><td></td></tr></tbody></table></td><td valign="bottom"><table id="bar1_31" style="background-color:rgb(129,216,208);height:132px;width:5px" title="2020: 132"><tbody><tr><td></td></tr></tbody></table></td><td valign="bottom"><table id="bar1_32" style="background-color:rgb(129,216,208);height:110px;width:5px" title="2021: 110"><tbody><tr><td></td></tr></tbody></table></td><td valign="bottom"><table id="bar1_33" style="background-color:rgb(129,216,208);height:158px;width:5px" title="2022: 158"><tbody><tr><td></td></tr></tbody></table></td><td valign="bottom"><table id="bar1_34" style="background-color:rgb(129,216,208);height:127px;width:5px" title="2023: 127"><tbody><tr><td></td></tr></tbody></table></td><td valign="bottom"><table id="bar1_35" style="background-color:rgb(129,216,208);height:77px;width:5px" title="2024: 77"><tbody><tr><td></td></tr></tbody></table></td></tr><tr data-summary-axis-baseline=""><td colspan="36"><div style="display:flex;flex-direction:row;justify-content:space-between;"><div style="writing-mode: vertical-lr;font-size: 10px;transform: scale(0.8);display: inline-block;color: #FFFFFF">1983</div><div style="writing-mode: vertical-lr;font-size: 10px;transform: scale(0.8);display: inline-block;color: #FFFFFF">2024</div></div></td></tr><tr><td colspan="36" style="text-align:center;"><div style="color:#FFFFFF;font-size:10px;">Year</div></td></tr></tbody></table><div><div id="infoDiv" style="padding:0.5%;background-color:rgba(0,0,0,0.7);color:rgb(255,255,255);display:none;position:fixed;"></div><div id="chart1_ID_All" style="display : none"></div></div></div></div></div></div><div class="div_row"><div id="chartContainer2" class="div_charts3"><style>
+					table.t_top10, table.t_top10 th, table.t_top10 td{
+						border:1px solid #FFFFFF;
+						border-collapse:collapse;
+					}
+					table.t_top10{
+						width:95%;
+					}
+					table.t_top10 th, table.t_top10 td{
+						padding:5px;
+						color:#FFFFFF;
+					}
+				</style><h2 style="width:;text-align: center;color:#FFFFFF;">TOP10 HOT DRUGS</h2><table class="t_top10"><tbody><tr><th>Drug Name</th><th>Cancer Type</th></tr><tr><td>metformin</td><td title="Drug Name : metformin
+Total : 23
+colorectal cancer, breast cancer, liver cancer, normal cell, leukemia, brain cancer, pancreas cancer, bone cancer (bone sarcomas), prostate cancer, lung cancer, renal cancer, uterine cancer, head and neck cancer, mesothelioma, bladder cancer, ovarian cancer, gall cancer, lymphoma, skin cancer, cervical cancer, pediatric cancer, soft tissue sarcomas, gastric (stomach) cancer">colorectal cancer, breast cancer, liver cancer, normal cell ...</td></tr><tr><td>disulfiram</td><td title="Drug Name : disulfiram
+Total : 20
+brain cancer, leukemia, pancreas cancer, lung cancer, bone cancer (bone sarcomas), ovarian cancer, breast cancer, liver cancer, renal cancer, normal cell, head and neck cancer, colorectal cancer, soft tissue sarcomas, skin cancer, esophageal cancer, pediatric cancer, uterine cancer, gastric (stomach) cancer, prostate cancer, adrenal cancer">brain cancer, leukemia, pancreas cancer, lung cancer ...</td></tr><tr><td>digoxin</td><td title="Drug Name : digoxin
+Total : 19
+gastric (stomach) cancer, eye cancer, uterine cancer, lymphoma, leukemia, breast cancer, pediatric cancer, lung cancer, colorectal cancer, adrenal cancer, normal cell, bone cancer (bone sarcomas), thyroid cancer, brain cancer, esophageal cancer, pancreas cancer, renal cancer, ovarian cancer, others">gastric (stomach) cancer, eye cancer, uterine cancer, lymphoma ...</td></tr><tr><td>chloroquine</td><td title="Drug Name : chloroquine
+Total : 19
+colorectal cancer, breast cancer, lung cancer, normal cell, liver cancer, skin cancer, bone cancer (bone sarcomas), gastric (stomach) cancer, bladder cancer, prostate cancer, renal cancer, gall cancer, uterine cancer, pancreas cancer, brain cancer, leukemia, esophageal cancer, ovarian cancer, cervical cancer">colorectal cancer, breast cancer, lung cancer, normal cell ...</td></tr><tr><td>simvastatin</td><td title="Drug Name : simvastatin
+Total : 19
+prostate cancer, normal cell, breast cancer, esophageal cancer, colorectal cancer, thyroid cancer, liver cancer, bone cancer (bone sarcomas), others, pancreas cancer, bladder cancer, ovarian cancer, lung cancer, gall cancer, head and neck cancer, gastric (stomach) cancer, skin cancer, brain cancer, lymphoma">prostate cancer, normal cell, breast cancer, esophageal cancer ...</td></tr><tr><td>niclosamide</td><td title="Drug Name : niclosamide
+Total : 19
+pediatric cancer, prostate cancer, renal cancer, liver cancer, normal cell, leukemia, colorectal cancer, ovarian cancer, lung cancer, breast cancer, skin cancer, eye cancer, bone cancer (bone sarcomas), adrenal cancer, head and neck cancer, uterine cancer, pancreas cancer, brain cancer, mesothelioma">pediatric cancer, prostate cancer, renal cancer, liver cancer ...</td></tr><tr><td>artesunate</td><td title="Drug Name : artesunate
+Total : 19
+head and neck cancer, leukemia, normal cell, prostate cancer, lung cancer, ovarian cancer, liver cancer, colorectal cancer, bladder cancer, uterine cancer, brain cancer, esophageal cancer, renal cancer, gastric (stomach) cancer, breast cancer, pancreas cancer, cervical cancer, skin cancer, thyroid cancer">head and neck cancer, leukemia, normal cell, prostate cancer ...</td></tr><tr><td>paroxetine</td><td title="Drug Name : paroxetine
+Total : 18
+colorectal cancer, breast cancer, brain cancer, liver cancer, normal cell, lung cancer, skin cancer, head and neck cancer, gastric (stomach) cancer, prostate cancer, bone cancer (bone sarcomas), renal cancer, bladder cancer, uterine cancer, ovarian cancer, pancreas cancer, pediatric cancer, leukemia">colorectal cancer, breast cancer, brain cancer, liver cancer ...</td></tr><tr><td>fenofibrate</td><td title="Drug Name : fenofibrate
+Total : 18
+oral cancer, pancreas cancer, breast cancer, head and neck cancer, prostate cancer, esophageal cancer, renal cancer, colorectal cancer, liver cancer, lung cancer, ovarian cancer, pediatric cancer, uterine cancer, skin cancer, brain cancer, bone cancer (bone sarcomas), normal cell, leukemia">oral cancer, pancreas cancer, breast cancer, head and neck cancer ...</td></tr><tr><td>ormeloxifene</td><td title="Drug Name : ormeloxifene
+Total : 18
+breast cancer, normal cell, ovarian cancer, pancreas cancer, uterine cancer, prostate cancer, liver cancer, renal cancer, colorectal cancer, leukemia, bone cancer (bone sarcomas), lymphoma, skin cancer, bladder cancer, lung cancer, head and neck cancer, esophageal cancer, brain cancer">breast cancer, normal cell, ovarian cancer, pancreas cancer ...</td></tr></tbody></table><div id="info_LC3" class="div_floatInfo"></div></div><div id="chartContainer3" class="div_charts"><style>
+					table.t_top10, table.t_top10 th, table.t_top10 td{
+						border:1px solid #FFFFFF;
+						border-collapse:collapse;
+					}
+					table.t_top10{
+						width:95%;
+					}
+					table.t_top10 th, table.t_top10 td{
+						padding:5px;
+						color:#FFFFFF;
+					}
+				</style><h2 style="width:;text-align: center;color:#FFFFFF;">TOP10 HOT CANCERS</h2><table class="t_top10"><tbody><tr><th>Cancer Type</th><th>Drug Name</th></tr><tr><td>Breast Cancer</td><td title="Cancer Type : Breast Cancer
+Total : 326
+Arginine, Vitamin C, L-Glutamine, Calcitriol, Lipoic acid, Cholecalciferol, Doconexent, Benzatropine, Desmopressin, Pravastatin, Fluvoxamine, Oseltamivir, Caffeine, Sildenafil, Pyrimethamine, Azithromycin, Adapalene, Glimepiride, Lovastatin, Ranolazine, Cabergoline, Phenytoin, Doxycycline, Clotrimazole, Olmesartan, Argatroban, Lidocaine, Pamidronic acid, Indomethacin, Metformin, Olanzapine, Omeprazole, Protriptyline, Methylergometrine, Cidofovir, Digoxin, Zoledronic acid, Zoledronic Acid, Nisoldipine, Mupirocin, Carbachol, Spironolactone, Cyproheptadine, Allopurinol, Chloramphenicol, Lansoprazole, Loratadine, Montelukast, Fluoxetine, Chlorpromazine, Raloxifene, Celecoxib, ZidoVudine, Nitazoxanide, Triflupromazine, Albendazole, Ciprofloxacin, Piroxicam, Lamotrigine, Bosentan, Tigecycline, Cephalexin, Propranolol, Doxazosin, Amiloride, Ivermectin, Cisapride, Chloroquine, Amodiaquine, Rifabutin, Fluphenazine, Alendronic Acid, Astemizole, Simvastatin, SimVastatin, Mebendazole, Trazodone, Thioridazine, Tobramycin, Eplerenone, Amprenavir, Ibandronate, Paroxetine, Nitroglycerin, Risperidone, Pentamidine, Riluzole, Deferoxamine, Etodolac, Clopidogrel, Mometasone, Oxcarbazepine, Naproxen, Candesartan cilexetil, Fenoldopam, Pentoxifylline, Ribavirin, Acetazolamide, Disulfiram, Trifluoperazine, Mifepristone, Loperamide, Clofazimine, Penicillamine, Verapamil, Vardenafil, Ranitidine, Flupentixol, Clomifene, Ethacrynic acid, Ondansetron, Repaglinide, Aspirin, Fexofenadine, Dipyridamole, Cromoglicic acid, Tioconazole, Glyburide, Mycophenolic acid, Ketoconazole, Fenofibrate, Isoprenaline, Glipizide, Promethazine, Atorvastatin, Orlistat, Fluvastatin, Rosuvastatin, Pimozide, Quinacrine, Sertraline, Atovaquone, Diazoxide, Dutasteride, Pioglitazone, Levofloxacin, Gemifloxacin, Itraconazole, Podofilox, Domperidone, Ciclopirox, Bromocriptine, Clarithromycin, Quetiapine, Metoclopramide, Aripiprazole, Sodium Bicarbonate, Colchicine, Digitoxin, Danazol, Pranlukast, Nitroxoline, Bacampicillin, Deferasirox, Hydroxychloroquine, Suramin, Nomifensine, Buformin, MaraViroc, Dronedarone, Ospemifene, Pirfenidone, Telaprevir, Noscapine, Simeprevir, Bazedoxifene, Aprotinin, Carglumic Acid, Methylnaltrexone, Niclosamide, Pyrvinium, Ticagrelor, Deferiprone, Fingolimod, Linagliptin, Bedaquiline, Canagliflozin, Macitentan, Isoconazole, Flubendazole, Tolfenamic acid, Bemiparin, Curcumin, Ebastine, Ulinastatin, Canrenone, Benserazide, Pyronaridine, Thiram, Proscillaridin, Ormeloxifene, Dilazep, Penfluridol, Propagermanium, Miconazole, Estradiol, Nelfinavir, Amitriptyline, Ritonavir, Tiludronic acid, Risedronic acid, Melatonin, Afimoxifene, Leflunomide, Mexiletine, Nimodipine, Sulindac, Tranilast, Paliperidone, Dichloroacetic acid, Icosapent, DMC(Dimethocaine), Esomeprazole, Pantoprazole, Losartan, Cimetidine, Tacrine, Isoniazid, Rutin, Memantine, Ademetionine, Menadione, Tacalcitol, Amlodipine, Mefloquine, Tafenoquine, Primaquine, Artesunate, Cycloguanil, Telmisartan, Docusate, Fenticonazole, Acetylcysteine, Oxytocin, Benproperine, Bupropion, Tianeptine, Ivabradine, Voacamine, Nafamostat, Amiodarone, Carvedilol, Imipramine, Ketorolac, Diclofenac, Fluconazole, Rosiglitazone, Terazosin, Alfuzosin, Prazosin, Nicardipine, Liraglutide, Minoxidil, Fidaxomicin, Acarbose, Diacerein, Perampanel, Antimony potassium tartrate, Dapagliflozin, Cannabidiol, Defibrotide, Rolapitant, Nadolol, Terconazole, Posaconazole, Lomitapide, Glutathione, Sulconazole, Ouabain, Minocycline, Escin, Edaravone, Etravirine, Pimobendan, Rilpivirine, Revaprazan, Auranofin, Cinacalcet, Nebivolol, Pimavanserin, Vortioxetine, Acebutolol, Timolol, Betaxolol, Carteolol, Metoprolol, Sotalol, Labetalol, Alendronic acid, Zafirlukast, Sertaconazole, Remdesivir, Baricitinib, Nitrofurantoin, Eugenol, Vancomycin, Daptomycin, Linezolid, Teicoplanin, Clemastine, Fenoterol, Hydralazine, Maduramicin, Micafungin, Monensin, Nalidixic acid, Nortriptyline, Palmitic Acid, Perphenazine, Pitavastatin, Reserpine, Salbutamol, Salinomycin, Sulfasalazine, Tenofovir, Trimetazidine, Sulfadiazine, Clofibrate, Bumetanide, Granisetron, Rabeprazole, Proguanil, Gemfibrozil, Taurine, Pazopanib, Artenimol">Arginine, Vitamin C, L-Glutamine, Calcitriol ...</td></tr><tr><td>Colorectal Cancer</td><td title="Cancer Type : Colorectal Cancer
+Total : 249
+Lipoic acid, Doconexent, Anakinra, L-Glutamine, Pravastatin, Troglitazone, Caffeine, Sildenafil, Pyrimethamine, Azithromycin, Adapalene, Pantoprazole, Nelfinavir, Lovastatin, Mesalazine, Benzatropine, Doxycycline, Clotrimazole, Lidocaine, Amitriptyline, Indomethacin, Metformin, Omeprazole, Mefloquine, Cidofovir, Mirtazapine, Triamterene, Digoxin, Zoledronic acid, Zoledronic Acid, Mupirocin, Promazine, Spironolactone, Antazoline, Allopurinol, Loratadine, Fluoxetine, Chlorpromazine, Nitazoxanide, Ivermectin, Sulindac, Chloroquine, Amodiaquine, Simvastatin, Mebendazole, Dyclonine, Losartan, Midazolam, Tobramycin, Naltrexone, Paroxetine, Adefovir dipivoxil, Nitroglycerin, Thiabendazole, Riluzole, Deferoxamine, Etodolac, Clopidogrel, Naproxen, Sulfasalazine, Ribavirin, Disulfiram, Menthol, Trifluoperazine, Mifepristone, Loperamide, Sirolimus, Ethacrynic acid, Aspirin, Azelastine, Dipyridamole, Nandrolone phenpropionate, Auranofin, Cromoglicic acid, Tioconazole, Mycophenolic acid, Irbesartan, Fenofibrate, Tegaserod, Rosuvastatin, Flucytosine, Pimozide, Quinacrine, Sertraline, Nifedipine, Cefadroxil, Ciclopirox, Aripiprazole, Olsalazine, Paliperidone, Sodium Bicarbonate, Colchicine, Digitoxin, Nitroxoline, Deferasirox, Hydroxychloroquine, Maraviroc, Vildagliptin, Indacaterol, Noscapine, Bazedoxifene, Vilazodone, Methylnaltrexone, Niclosamide, Tinzaparin, Lurasidone, Fingolimod, Linagliptin, Canagliflozin, Dimethyl Fumarate, Flubendazole, Aliskiren, Tolfenamic acid, Artesunate, Moxidectin, Curcumin, Ulinastatin, Naftopidil, Benserazide, Proscillaridin, Benproperine, Penfluridol, Estradiol benzoate, Lithium carbonate, Desipramine, Imipramine, Tranylcypromine, Verapamil, Thioridazine, Tiludronic acid, Citalopram, Celecoxib, Monomethyl fumarate, Pentoxifylline, Nicardipine, Ouabain, Dirithromycin, Topiramate, Granisetron, Atomoxetine, Cilastatin, Nifuroxazide, Obeticholic Acid, Clofazimine, Amlodipine, Atovaquone, azelastine, Propranolol, Orlistat, Atorvastatin, Clarithromycin, Itraconazole, Prasterone, Dichloroacetic acid, Azelnidipine, Oxibendazole, Albendazole, Hexachlorophene, Tannic acid, Difluoromethylornithine, Domperidone, Clomipramine, Pyrvinium, Aprepitant, Tauroursodeoxycholic acid, Lomitapide, Promethazine, Ormeloxifene, Diacerein, Fluphenazine, Perhexiline, Verteporfin, Deslanoside, Minocycline, Pitavastatin, Obeticholic acid, Defibrotide, Liothyronine, Oxiconazole, Dolasetron, Ketoprofen, Levofloxacin, Fluvastatin, Edaravone, Quetiapine, Pyronaridine, Etravirine, Pimobendan, Rilpivirine, Revaprazan, Esomeprazole, Lesinurad, Minoxidil, Olanzapine, Sulfamethizole, Tranilast, Abacavir, Dicoumarol, Sulfadiazine, Sulfamethazine, Tenoxicam, Trichlormethiazide, Chlorthalidone, Gliclazide, Tolcapone, Nortriptyline, Theophylline, Copper, Zafirlukast, Nitric Oxide, Sertaconazole, Nitrofurantoin, Candesartan cilexetil, Cinacalcet, Clemastine, Clomifene, Ethionamide, Ketoconazole, Lansoprazole, Nalidixic acid, Nebivolol, Norepinephrine, Palmitic Acid, Pentamidine, Perphenazine, Phenformin, Prochlorperazine, Protriptyline, Reserpine, Tacrine, Terbinafine, Terfenadine, Valproic acid, Venlafaxine, Erythromycin, Famciclovir, Chloramphenicol, Tigecycline, Linezolid, Ergotamine, Tetracycline, Ketotifen, Oxybutynin, Escitalopram, Sitagliptin, Tezacaftor, Rilmenidine, Bempedoic acid, Fenticonazole">Lipoic acid, Doconexent, Anakinra, L-Glutamine ...</td></tr><tr><td>Brain Cancer</td><td title="Cancer Type : Brain Cancer
+Total : 239
+Melatonin, Doconexent, Icosapent, Fluvoxamine, Caffeine, Azithromycin, Pantoprazole, Lovastatin, Doxycycline, Amitriptyline, Metformin, Olanzapine, Chlorzoxazone, Mirtazapine, Trihexyphenidyl, Triamterene, Digoxin, Nimodipine, Prazosin, Imipramine, Verteporfin, Fluoxetine, Chlorpromazine, Raloxifene, Haloperidol, Ritonavir, Nitazoxanide, Tigecycline, Diclofenac, Doxazosin, Thiopental, Ivermectin, Alendronic Acid, Mebendazole, Aprepitant, Thioridazine, Midazolam, Flurbiprofen, Paroxetine, Pentamidine, Riluzole, Sulfasalazine, Ribavirin, Propofol, Disulfiram, Diazepam, Loperamide, Clofazimine, Perphenazine, Terbinafine, Vardenafil, Verapamil, Risedronic acid, Repaglinide, Phenformin, Phenoxybenzamine, Ramelteon, Auranofin, Ganciclovir, Tioconazole, Minocycline, Fenofibrate, Memantine, Ibuprofen, Orlistat, Ouabain, Pimozide, Sertraline, Miconazole, Papaverine, Nifedipine, Atovaquone, Thiamylal, Itraconazole, Escitalopram, Captopril, Levetiracetam, Ketamine, Quetiapine, Aripiprazole, Clomipramine, Mibefradil, Sodium Bicarbonate, Digitoxin, Lopinavir, Deferasirox, Clioquinol, MaraViroc, Fluspirilene, Ibudilast, Noscapine, Eflornithine, Simeprevir, Agomelatine, Pyrvinium, Phenylbutyric acid, Fasudil, Triclosan, Macitentan, Flubendazole, Brexpiprazole, Tolfenamic acid, Artesunate, Nifurtimox, Proscillaridin, Penfluridol, Candesartan, Talaporfin, Prochlorperazine, Aspirin, Copper, Valproic acid, Tranylcypromine, Terazosin, Celecoxib, Chloroquine, Ticlopidine, Sirolimus, Atorvastatin, Curcumin, Albendazole, Dapsone, Econazole, Flunarizine, Quinine, Chlorhexidine, Niclosamide, Quinacrine, Astemizole, Halofantrine, Alendronic acid, Sertindole, Thonzonium, Pentoxyverine, Trifluoperazine, Tubocurarine, Spironolactone, Idebenone, Fluvastatin, Domperidone, Desipramine, Nisoldipine, Diltiazem, Benidipine, Nilvadipine, Nicardipine, Trifluridine, Amlodipine, Maprotiline, Apomorphine, Mometasone, Nortriptyline, Sulfamethizole, Flunisolide, Oxiconazole, Chlorothiazide, Fluorometholone, Pimavanserin, Thiabendazole, Propranolol, Aliskiren, Cilazapril, Ranolazine, Dichloroacetic acid, Lurasidone, Mefloquine, Cefepime, Ceftazidime, Benzylpenicillin, Cefazolin, Ceftriaxone, Meclofenamic acid, Ormeloxifene, Mianserin, Triflupromazine, Doxylamine, Protriptyline, Metixene, Citalopram, Benserazide, Simvastatin, Clindamycin, Clarithromycin, Phloroglucinol, Ezogabine, Minoxidil, Gabapentin, Lamotrigine, Zolmitriptan, Topiramate, Acetazolamide, Quercetin, Lansoprazole, Meclizine, Cinnarizine, Hydroxyzine, Bumetanide, Selumetinib, Valganciclovir, Carvedilol, Nebivolol, Pyronaridine, Pitavastatin, Copper Gluconate, Levofloxacin, Fingolimod, Telaprevir, Stiripentol, Miglustat, Triptolide, Mycophenolate mofetil, Mycophenolic acid, Nifuroxazide, Lidoflazine, Menadione, Sitagliptin, Benzatropine, Cholesterol, Clemastine, Fluphenazine, Oxcarbazepine, Perampanel, Erythromycin, Indinavir, Lidocaine, Bupivacaine, Acetaminophen, Ketorolac?Tromethamine, Furosemide, Lamivudine, Nitroglycenn, Ondansetron, Abacavir, Metoclopramide, Darunavir, Raltegravir, Vortioxetine, Thimerosal, Turmeric">Melatonin, Doconexent, Icosapent, Fluvoxamine ...</td></tr><tr><td>Lung Cancer</td><td title="Cancer Type : Lung Cancer
+Total : 219
+Pyridoxine, Lipoic acid, Troglitazone, Caffeine, Pyrimethamine, Azithromycin, Adapalene, Nelfinavir, Glimepiride, Lovastatin, Phenytoin, Doxycycline, Argatroban, Lidocaine, Clemastine, Acetaminophen, Amitriptyline, Indomethacin, Metformin, Olanzapine, Omeprazole, Terfenadine, Mefloquine, Cidofovir, Digoxin, Zoledronic acid, Zoledronic Acid, Rosiglitazone, Promazine, Lansoprazole, Loratadine, Imipramine, Enoxacin, Montelukast, Fluoxetine, Cimetidine, Ritonavir, Ciprofloxacin, Tigecycline, Doxazosin, Ivermectin, Chloroquine, Amodiaquine, Rifabutin, Astemizole, Simvastatin, SimVastatin, Mebendazole, Dyclonine, Aprepitant, Warfarin, Thiabendazole, Risperidone, Riluzole, Naproxen, Haloprogin, Candesartan cilexetil, Ribavirin, Disulfiram, Trifluoperazine, Loperamide, Donepezil, Penicillamine, Sirolimus, Ethacrynic acid, Aspirin, Fexofenadine, Telmisartan, Desloratadine, Auranofin, Cromoglicic acid, Clobetasol propionate, Glyburide, Minocycline, Fenofibrate, Glipizide, Atorvastatin, Tegaserod, Ouabain, Fluvastatin, Pimozide, Quinacrine, Nifedipine, Pioglitazone, Carvedilol, Desipramine, Gemifloxacin, Propafenone, Ciclopirox, Captopril, Clarithromycin, Ketamine, Budesonide, Enoxaparin, Saquinavir, Metoclopramide, Aripiprazole, Bezafibrate, Colchicine, Digitoxin, Nitroxoline, Hydroxychloroquine, Roflumilast, Nimesulide, Clioquinol, Prenylamine, Pirfenidone, Indacaterol, Noscapine, Carglumic Acid, Dalteparin, Niclosamide, Pyrithione, Pyrvinium, Tinzaparin, Fasudil, Nadroparin, Teriflunomide, Bedaquiline, Canagliflozin, Macitentan, Flubendazole, Brexpiprazole, Loxoprofen, Tolfenamic acid, Cilnidipine, Bemiparin, Artesunate, Sodium Aurothiomalate, Benzethonium, Artenimol, Curcumin, Ebastine, Pyronaridine, Artemisinin, Atracurium, Proscillaridin, Penfluridol, Hycanthone, Miconazole, Tiludronic acid, Pamidronic acid, Neridronic Acid, Risedronic acid, Ibandronate, Alendronic acid, Etidronic acid, Clodronic acid, Spiperone, Oxytetracycline, Metamizole, Clomipramine, Promethazine, Tranylcypromine, Pargyline, Bepridil, Phenylbutyric acid, Nicardipine, Dirithromycin, Topiramate, Granisetron, Atomoxetine, Nitazoxanide, Cilastatin, Sulfasalazine, Methylnaltrexone, Aminophylline, Riboflavin, Levamisole, Metronidazole, Atovaquone, Memantine, Nicotinamide, Gliclazide, Itraconazole, Tacrine, Verapamil, Paroxetine, Leflunomide, Prochlorperazine, Gatifloxacin, Moxifloxacin, Levofloxacin, Propranolol, Lurasidone, Rolapitant, Diacerein, Albendazole, Ormeloxifene, Valproic acid, Antimony potassium tartrate, Plerixafor, Etoricoxib, Selumetinib, Acetylcysteine, Levothyroxine, Verteporfin, Sulconazole, Lofepramine, Raloxifene, Nitric Oxide, Sertaconazole, Remdesivir, Baricitinib, Triamterene, Atenolol, Bazedoxifene, Bisoprolol, Cinnarizine, Diaminopropanol tetraacetic acid, Epinephrine, Esmolol, Flunarizine, Isoprenaline, Metoprolol, Mifepristone, Nadolol, Pentamidine, Pentoxifylline">Pyridoxine, Lipoic acid, Troglitazone, Caffeine ...</td></tr><tr><td>Prostate Cancer</td><td title="Cancer Type : Prostate Cancer
+Total : 162
+Vitamin C, L-Glutamine, Calcitriol, Lipoic acid, Caffeine, Sildenafil, Pyrimethamine, Azithromycin, Lovastatin, Ranolazine, Doxycycline, Argatroban, Pamidronic acid, Clemastine, Acetaminophen, Metformin, Terfenadine, Clozapine, Cidofovir, Timolol, Zoledronic acid, Zoledronic Acid, Promazine, Loratadine, Prazosin, Chlorpromazine, Albendazole, Ciprofloxacin, Tigecycline, Ivermectin, Chloroquine, Alendronic Acid, Astemizole, Simvastatin, SimVastatin, Mebendazole, Phentolamine, Methazolamide, Ibandronate, Clodronic acid, Risperidone, Riluzole, Etodolac, Clopidogrel, Ribavirin, Ethacrynic acid, Famotidine, Aspirin, Phenprocoumon, Fexofenadine, Isoniazid, Desloratadine, Dipyridamole, Minocycline, Fenofibrate, Memantine, Glipizide, Diphenhydramine, Atorvastatin, Tegaserod, Orlistat, Fluvastatin, Pimozide, Sertraline, Dutasteride, Itraconazole, Ciclopirox, Bromocriptine, Finasteride, Clomipramine, Hydralazine, Colchicine, Nitroxoline, Hydroxychloroquine, Pargyline, Pirfenidone, Noscapine, Niclosamide, Pyrvinium, Phenylbutyric acid, Fasudil, Triclosan, Deferiprone, Fingolimod, Canagliflozin, Ifenprodil, Tolfenamic acid, Artesunate, Sodium Aurothiomalate, Ebastine, Naftopidil, Clofoctol, Ormeloxifene, Penfluridol, Candesartan, Nelfinavir, Clodronic Acid, Sirolimus, Meclofenamic acid, Menadione, Nicardipine, Ouabain, Dirithromycin, Topiramate, Granisetron, Atomoxetine, Nitazoxanide, Cilastatin, Tamsulosin, Acetylcysteine, Valproic acid, Ursodeoxycholic Acid, Dihydroergocristine, Levetiracetam, Tacrine, Verapamil, Benproperine, Methoxsalen, Phenytoin, Warfarin, Levofloxacin, Clotrimazole, Deslanoside, Paroxetine, Naltrexone, Mepyramine, Neticonazole, Sitafloxacin, Racepinephrine, Isoprenaline, Fenoterol, Ketoprofen, Epinephrine, Mephenesin, Norepinephrine, Caroverine, Fludarabine, Histrelin, Hydrocortisone, Cupric oxide, Pentamidine, Telaprevir, Saquinavir, Vancomycin, Daptomycin, Linezolid, Teicoplanin, Fluoxetine, Pimavanserin, Vortioxetine, Piperacetazine, Cisapride, Almotriptan, Lurasidone, Desvenlafaxine, Dapsone, Ezetimibe, Disulfiram, Nifedipine, Amiodarone, Flecainide, Sodium stibogluconate">Vitamin C, L-Glutamine, Calcitriol, Lipoic acid ...</td></tr><tr><td>Pancreas Cancer</td><td title="Cancer Type : Pancreas Cancer
+Total : 148
+Biotin, Vitamin C, Pyrimethamine, Azithromycin, Adapalene, Moxifloxacin, Nelfinavir, Glimepiride, Lovastatin, Nevirapine, Doxycycline, Argatroban, Metformin, Olanzapine, Omeprazole, Zoledronic acid, Promazine, Lansoprazole, Verteporfin, Raloxifene, Zidovudine, Haloperidol, Ritonavir, Ciprofloxacin, Tigecycline, Doxazosin, Amiloride, Efavirenz, Simvastatin, Mebendazole, Losartan, Warfarin, Delavirdine, Etodolac, Haloprogin, Pentoxifylline, Disulfiram, Trifluoperazine, Verapamil, Sirolimus, Paricalcitol, Dipyridamole, Auranofin, Glyburide, Mycophenolic acid, Fenofibrate, Gatifloxacin, Glipizide, Orlistat, Fluvastatin, Leflunomide, Flucytosine, Pimozide, Quinacrine, Pioglitazone, Gemifloxacin, Finasteride, Ketamine, Aripiprazole, Nitroxoline, Deferasirox, Bazedoxifene, Etravirine, Carglumic Acid, Pyrvinium, Rilpivirine, Fingolimod, Brexpiprazole, Tolfenamic acid, Bemiparin, Curcumin, Pyronaridine, Ormeloxifene, Penfluridol, Candesartan, Hycanthone, Lithium carbonate, Sodium aurothiomalate, Benproperine, Chloroquine, Afimoxifene, Mexiletine, Nimodipine, Sulindac, Tranilast, Rutin, Ibuprofen, Celecoxib, Niclosamide, Nicardipine, Ouabain, Dirithromycin, Topiramate, Granisetron, Atomoxetine, Nitazoxanide, Cilastatin, Ciclopirox, Atorvastatin, Digoxin, Pimavanserin, Biperiden, Aspirin, Aprepitant, Flubendazole, Oxibendazole, Albendazole, Clofazimine, Propranolol, Domperidone, Imipramine, Desipramine, Amitriptyline, Clomipramine, Phenytoin, Palmitic Acid, Progesterone, Artesunate, Triptolide, Lurasidone, Fluphenazine, Paroxetine, Emetine, Atovaquone, Phenformin, Oseltamivir, Mifepristone, Carbidopa, Pimobendan, Revaprazan, Zafirlukast, Lomitapide, Candesartan cilexetil, Montelukast, Perhexiline, Pranlukast, Trimetazidine, Amlodipine, Ivermectin, Bumetanide, Nefazodone, Taurine, Pazopanib, Empagliflozin, Rilmenidine, Revefenacin, Eravacycline, Omadacycline">Biotin, Vitamin C, Pyrimethamine, Azithromycin ...</td></tr><tr><td>Leukemia</td><td title="Cancer Type : Leukemia
+Total : 144
+Sildenafil, Pyrimethamine, Reserpine, Glimepiride, Doxycycline, Clotrimazole, Pamidronic acid, Acetaminophen, Amitriptyline, Metformin, Olanzapine, Omeprazole, Digoxin, Griseofulvin, Chloramphenicol, Lansoprazole, Verteporfin, Montelukast, Chlorpromazine, ZidoVudine, Haloperidol, Trandolapril, Ciprofloxacin, Tigecycline, Enalapril, Diclofenac, Amiloride, Thiopental, Ivermectin, Efavirenz, Losartan, Thioridazine, Midazolam, Clodronic acid, Risperidone, Pentamidine, Etodolac, Tetracycline, Mometasone, Pentoxifylline, RibaVirin, Propofol, Disulfiram, Diazepam, Trifluoperazine, Donepezil, Perphenazine, Diflunisal, Vardenafil, Ethacrynic acid, Phenprocoumon, Dopamine, Glyburide, Minocycline, Glipizide, Pimozide, Quinacrine, Amiodarone, Pioglitazone, Thiamylal, Gemifloxacin, Ciclopirox, Captopril, Bromocriptine, Clarithromycin, Chlorprothixene, Bepridil, Hydralazine, Colchicine, Danazol, Nitroxoline, Deferasirox, Clioquinol, Maraviroc, Niclosamide, Pyrithione, Pyrvinium, Ticagrelor, Flubendazole, Trimetazidine, Bemiparin, Artesunate, Artenimol, Pyronaridine, Proscillaridin, Nelfinavir, Promethazine, Methotrimeprazine, Meclizine, Mycophenolic acid, Atorvastatin, estradiol, Prochlorperazine, Atovaquone, Chloroquine, Quetiapine, Copper, Furazolidone, Rosuvastatin, Mebendazole, Ormeloxifene, Antimony potassium tartrate, Mesalazine, Tofacitinib, Ruxolitinib, Colistin, Nicotinamide, Diflorasone, Benazepril, Tizanidine, Monensin, Zafirlukast, Adapalene, Levofloxacin, Raloxifene, Auranofin, Etravirine, Pimobendan, Rilpivirine, Revaprazan, Esomeprazole, Fenofibrate, Granisetron, Lesinurad, Minoxidil, Sulfamethizole, Tranilast, Vildagliptin, Abacavir, Dicoumarol, Domperidone, Pantoprazole, Sulfadiazine, Sulfamethazine, Tenoxicam, Trichlormethiazide, Chlorthalidone, Gliclazide, Sertaconazole, Carvedilol, Clomifene, Clomipramine, Paroxetine, Alendronic acid">Sildenafil, Pyrimethamine, Reserpine, Glimepiride ...</td></tr><tr><td>Skin Cancer</td><td title="Cancer Type : Skin Cancer
+Total : 138
+Vitamin C, Pyridoxine, Melatonin, Sirolimus, Caffeine, Sildenafil, Pyrimethamine, Azithromycin, Moxifloxacin, Glimepiride, Doxycycline, Clotrimazole, Argatroban, Lidocaine, Tranexamic Acid, Indomethacin, Omeprazole, Mirtazapine, Amlodipine, Nimodipine, Albendazole, Zoledronic Acid, Nisoldipine, Lansoprazole, Fluoxetine, Ciprofloxacin, Tigecycline, Cephalexin, Propranolol, Ivermectin, Chloroquine, Amodiaquine, Mebendazole, Trazodone, Losartan, Flurbiprofen, Clodronic acid, Riluzole, Etodolac, Roxithromycin, Naproxen, Pentoxifylline, Tadalafil, Perphenazine, Terbinafine, Vardenafil, Ranitidine, Risedronic acid, Ethacrynic acid, Aspirin, Telmisartan, Glyburide, Fenofibrate, Glipizide, Atorvastatin, RosuVastatin, Pimozide, Quinacrine, Nifedipine, Pioglitazone, Carvedilol, Gemifloxacin, Itraconazole, Ciclopirox, Finasteride, Posaconazole, Noscapine, Niclosamide, Pyrvinium, Fasudil, Ticagrelor, Pitavastatin, Dimethyl Fumarate, Flubendazole, Pyronaridine, Penfluridol, Candesartan, Nelfinavir, Amitriptyline, Disulfiram, Ritonavir, Metformin, Atenolol, Sotalol, Bisoprolol, Timolol, Esmolol, Metoprolol, Labetalol, Nicotinamide, Prochlorperazine, Chlorhexidine, Pinaverium, Benzbromarone, Escin, Mefloquine, Tiratricol, Simvastatin, Eplerenone, Spironolactone, Cinnarizine, Benproperine, Paroxetine, Hydroxychloroquine, Lovastatin, Trifluoperazine, Cefepime, Ormeloxifene, Celecoxib, Antimony potassium tartrate, Calcipotriol, Fostamatinib, Zonisamide, Methylene Blue, Colistin, Atovaquone, Raloxifene, Phenelzine, Cetirizine, Auranofin, Venlafaxine, Propafenone, Fingolimod, Menadione, Domiphen bromide, Fluphenazine, Aceclofenac, Acyclovir, L-Glutamine, Artesunate, Deferoxamine, Ketoconazole, Pentamidine, Bumetanide, Dipyridamole, Nebivolol, Pazopanib, Rilmenidine">Vitamin C, Pyridoxine, Melatonin, Sirolimus ...</td></tr><tr><td>Liver Cancer</td><td title="Cancer Type : Liver Cancer
+Total : 137
+Vitamin C, Melatonin, Doconexent, Caffeine, Pyrimethamine, Adapalene, Lovastatin, Doxycycline, Lidocaine, Acetaminophen, Amitriptyline, Metformin, Methylergometrine, Cidofovir, Mupirocin, Allopurinol, Chloramphenicol, Fluoxetine, Chlorpromazine, Raloxifene, Tigecycline, Propranolol, Doxazosin, Chloroquine, Amodiaquine, Guanabenz, Alendronic Acid, Simvastatin, Losartan, Tobramycin, Thiabendazole, Meclizine, Riluzole, Deferoxamine, Oxcarbazepine, Roxithromycin, Naproxen, Sulfasalazine, Candesartan cilexetil, Pentoxifylline, Ribavirin, Meloxicam, Disulfiram, Trifluoperazine, Loperamide, Terbinafine, Ethacrynic acid, Ondansetron, Repaglinide, Amantadine, Aspirin, Cromoglicic acid, Glyburide, Minocycline, Felodipine, Mycophenolic acid, Fenofibrate, Fluvastatin, Rosuvastatin, Pimozide, Atovaquone, Pioglitazone, Carvedilol, Domperidone, Ciclopirox, Hydralazine, Colchicine, Digitoxin, Nitroxoline, Deferasirox, Maraviroc, Fluspirilene, Pirfenidone, Noscapine, Carglumic Acid, Niclosamide, Pyrithione, Azilsartan medoxomil, Fingolimod, Linagliptin, Canagliflozin, Flubendazole, Bemiparin, Artesunate, Ulinastatin, Menatetrenone, Benserazide, Candesartan, Lithium carbonate, Miconazole, Valproic acid, Simeprevir, Lithium citrate, Epalrestat, Megestrol Acetate, Metronidazole, Clofazimine, Ajmaline, Isocarboxazid, Docusate, Aprepitant, Maprotiline, Sertraline, Paroxetine, Fluvoxamine, Escitalopram, Duloxetine, Milnacipran, Celecoxib, Ciprofloxacin, Gatifloxacin, Moxifloxacin, Levofloxacin, Albendazole, Natamycin, Selenium Sulfide, Penfluridol, Mebendazole, Ormeloxifene, Sitagliptin, Pyronaridine, Loratadine, Sulconazole, Pentamidine, Tamsulosin, Auranofin, Zafirlukast, Nitrofurantoin, Curcumin, Eprosartan, Fluphenazine, Glutathione, Tauroursodeoxycholic acid, Sulfadiazine, Ezetimibe, Acetylcysteine, Fasudil">Vitamin C, Melatonin, Doconexent, Caffeine ...</td></tr><tr><td>Ovarian Cancer</td><td title="Cancer Type : Ovarian Cancer
+Total : 120
+Vitamin C, Calcitriol, Pyridoxine, Lipoic acid, Doconexent, Linolenic acid, Azithromycin, Adapalene, Lovastatin, Doxycycline, Topiramate, Tranexamic Acid, Acetaminophen, Metformin, Olanzapine, Minoxidil, Spironolactone, Antazoline, Ketorolac, Fluoxetine, Ritonavir, Albendazole, Tigecycline, Doxazosin, Ivermectin, Alendronic Acid, Simvastatin, Amphotericin B, Phentolamine, Naltrexone, Apomorphine, Disulfiram, Mifepristone, Loperamide, Pitavastatin, Ethacrynic acid, Telmisartan, Auranofin, Ganciclovir, Minocycline, Mycophenolic acid, Fenofibrate, Atorvastatin, Orlistat, Flucytosine, Quinacrine, Digitoxin, Roflumilast, Bithionol, Clioquinol, Dronedarone, Noscapine, Niclosamide, Pyrvinium, Tinzaparin, Tranilast, Fasudil, Ulipristal, Canagliflozin, Tolfenamic acid, Benidipine, Lacidipine, Manidipine, Artesunate, Naftopidil, Pyronaridine, Ormeloxifene, Nelfinavir, Amitriptyline, Sodium aurothiomalate, Ibuprofen, Amiodarone, Ibutilide, Sotalol, Miltefosine, Sirolimus, Clofazimine, Trimebutine, Mebendazole, Acyclovir, Nitisinone, Vigabatrin, Azathioprine, Terbinafine, Hydralazine, Valproic acid, Lomerizine, Ambroxol, Gestrinone, Deferasirox, Torasemide, Cefepime, Ceftazidime, Paroxetine, Verteporfin, Digoxin, Deslanoside, Atovaquone, Telaprevir, Colchicine, Verapamil, Itraconazole, Alendronic acid, Etravirine, Pimobendan, Rilpivirine, Revaprazan, Zafirlukast, Hydroxychloroquine, Chloroquine, Acetylcysteine, Cepharanthine, Citalopram, Clonidine, Dexmedetomidine, Gramicidin D, Loratadine, Sertraline, Xylazine, Alpha-1-proteinase inhibitor">Vitamin C, Calcitriol, Pyridoxine, Lipoic acid ...</td></tr></tbody></table><div id="info_LC2" class="div_floatInfo"></div></div></div></div></div>				</a>
+			</div>
+
+		</div>
+		<div class="hisContainer">
+			<div class="div_hisL">
+				<h3>Update Log :</h3>
+				<p>2024 - 07 - 05 : first release</p>
+
+			</div>
+			<div class="div_hisR">
+				<canvas id="history-chart" role="img" aria-label="Update Data History"></canvas>
+			</div>
+		</div>
+	</div>
+
+</main>
+
+<style>
+
+	h4.f_h4{
+
+		font-size: 26px;
+
+		color: #d87818;
+
+		margin-right: 20px;
+
+		margin-left: 20px;
+
+		border-bottom: 1px solid #d87818;
+
+	}
+
+	.brand-c{
+
+		color:#D62828;
+
+	}
+
+	div.div_footC{
+
+		display:flex;
+
+		flex-direction:row;
+
+		justify-content:center;
+
+		width:70%;
+
+		margin:0 auto 50px;
+
+	}
+
+	div.div_FC_child{
+
+		flex: 1;
+
+	}
+
+	div.div_FC_child > p{
+
+		margin: 0 20px 0;
+
+	}
+
+	p.p_CR{
+
+		margin-left:4%;
+
+	}
+
+</style>
+
+<footer>
+
+	<div class="div_footC">
+
+	<div class="div_FC_child">
+
+		<h4 class="f_h4">Cite <span>Dr.</span><span class="brand-c">C</span><span> database</span></h4>
+
+		<p>refer to (a passage, book, or author) as evidence for or justification of an argument or statement, especially in a scholarly work.</p>
+
+	</div>
+
+	<div class="div_FC_child">
+
+		<h4 class="f_h4">Contact</h4>
+
+		<p><a href="http://120.126.17.213:58038/P097v5/contact_us.php">Contact / Leave a message</a></p>
+
+	</div>
+
+	</div>
+
+	<p class="p_CR">©2026&nbsp;<a href="http://www.bio.ncue.edu.tw/people/bio.php?PID=35" target="_blank" rel="noopener noreferrer">NCUE</a> &amp; <a href="http://biobug.cgu.edu.tw/" target="_blank" rel="noopener noreferrer">CGU</a></p>
+
+</footer><a class="feedback-admin-link" href="http://120.126.17.213:58038/P097v5/qa.php" aria-label="Feedback administrator sign-in" title="Feedback administrator sign-in">
+	<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+		<path d="M12 3 5 6v5c0 4.6 2.9 8.2 7 10 4.1-1.8 7-5.4 7-10V6l-7-3Z"></path>
+		<path d="m9.5 12 1.7 1.7 3.5-3.5"></path>
+	</svg>
+</a>
+
+
+<script src="assets/js/chart.umd.min.js"></script><script>
+
+	const historyData = [['197001',835],['202109',2304],['202110',6299],['202111',6683],['202112',6827],['202201',7035],['202202',7089],['202203',7562],['202204',7637],['202205',7729],['202206',7795],['202207',8425],['202208',8644],['202209',8769],['202210',8971],['202211',8977],['202212',8985],['202303',9687],['202311',10694],['202403',11540],['202407',12295]];
+	const historyCanvas = document.getElementById('history-chart');
+	const historyChart = new Chart(historyCanvas, {
+		type: 'line',
+		data: {
+			labels: historyData.map(([label]) => label),
+			datasets: [{
+				data: historyData.map(([, value]) => value),
+				borderColor: '#64b5f6',
+				backgroundColor: '#64b5f6',
+				borderWidth: 2,
+				pointRadius: 0,
+				pointHoverRadius: 4,
+				fill: false,
+				tension: 0
+			}]
+		},
+		options: {
+			responsive: true,
+			maintainAspectRatio: false,
+			plugins: {
+				title: {
+					display: true,
+					text: 'Update Data History',
+					font: { size: 18 }
+				},
+				legend: { display: false }
+			},
+			scales: {
+				x: {
+					title: {
+						display: true,
+						text: 'Time (YYYY MM)'
+					}
+				},
+				y: {
+					title: {
+						display: true,
+						text: 'Total Num. of Records Collected'
+					}
+				}
+			}
+		}
+	});
+</script></body></html>
